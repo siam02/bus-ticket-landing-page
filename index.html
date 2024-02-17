@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,60 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                clifford: '#da373d',
-              }
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                        'primary': '#1DD100',
+                    }
+                }
             }
-          }
         }
-      </script>
+    </script>
 </head>
+
 <body>
-    
+    <header class="container mx-auto mt-12">
+        <!-- Navbar Start -->
+        <nav class="navbar bg-base-100">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>Home</a></li>
+                        <li><a>About</a></li>
+                        <li><a>Destination</a></li>
+                        <li><a>Search</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-ghost font-raleway font-extrabold text-4xl">P-Ticket</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 text-lg font-medium text-[#030712b3]">
+                    <li><a>Home</a></li>
+                    <li><a>About</a></li>
+                    <li><a>Destination</a></li>
+                    <li><a>Search</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn h-auto flex items-center gap-2 px-8 py-4 text-primary font-bold text-xl cursor-pointer rounded-xl hover:bg-green-200/[0.7] active:bg-green-300/[0.7] transition-all ease-linear bg-[#1dd1001a] border border-[#1dd10066]">
+                    Bus
+                    <i class="fa-solid fa-van-shuttle mt-1"></i>
+                </a>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+    </header>
+    <script src="https://kit.fontawesome.com/bab38a20bf.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
