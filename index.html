@@ -119,7 +119,8 @@
             <h2 class="font-Raleway text-2xl lg:text-[40px] text-heading font-extrabold text-center mb-12">Best offers
                 for you</h2>
             <div class="flex gap-6 justify-center flex-wrap">
-                <div class="bg-[#ffbf0f] font-Inter flex rounded-3xl">
+                <div id="NEW15" data-tip="Click to Copy Coupon Code"
+                    class="btn h-auto shadow-none tooltip border-0 hover:bg-[#ffbf0f] bg-[#ffbf0f] font-Inter flex rounded-3xl">
                     <div class="sm:p-6 pb-4 pl-4 pt-4 md:p-12">
                         <h3 class="text-4xl font-black">
                             15% OFF
@@ -129,12 +130,14 @@
                         <p class="text-[#03071280] text-lg font-medium mt-2">use by January 2024</p>
                     </div>
                     <img src="images/cupon-devider.png" alt="">
-                    <div class="flex flex-col justify-center items-center pb-4 pr-4 pt-4 sm:p-6 md:p-12 sm:pl-6 font-Raleway">
+                    <div
+                        class="flex flex-col justify-center items-center pb-4 pr-4 pt-4 sm:p-6 md:p-12 sm:pl-6 font-Raleway">
                         <h4 class="font-bold text-3xl">NEW15</h4>
                         <h4 class="font-medium text-xl mt-1 text-[#03071266]">Coupon Code</h4>
                     </div>
                 </div>
-                <div class="bg-[#F78C9C] font-Inter flex rounded-3xl">
+                <div id="Couple20" data-tip="Click to Copy Coupon Code"
+                    class="btn h-auto shadow-none tooltip border-0 hover:bg-[#F78C9C] bg-[#F78C9C] font-Inter flex rounded-3xl">
                     <div class="sm:p-6 pb-4 pl-4 pt-4 md:p-12">
                         <h3 class="text-4xl font-black">
                             20% OFF
@@ -144,7 +147,8 @@
                         <p class="text-[#03071280] text-lg font-medium mt-2">use by January 2024</p>
                     </div>
                     <img src="images/cupon-devider.png" alt="">
-                    <div class="flex flex-col justify-center items-center pb-4 pr-4 pt-4 sm:p-6 md:p-12 sm:pr-9 sm:pl-5 font-Raleway">
+                    <div
+                        class="flex flex-col justify-center items-center pb-4 pr-4 pt-4 sm:p-6 md:p-12 sm:pr-9 sm:pl-5 font-Raleway">
                         <h4 class="font-bold text-3xl">Couple 20</h4>
                         <h4 class="font-medium text-xl mt-1 text-[#03071266]">Coupon Code</h4>
                     </div>
@@ -193,14 +197,11 @@
                                 <p class="text-heading font-semibold text-lg">9:00 PM</p>
                             </div>
                             <div class="flex flex-wrap xl:justify-between font-medium font-Inter justify-center gap-4">
-                                <div
-                                    class="rounded-xl bg-gray p-4 xl:px-8 2xl:px-14">Boarding
+                                <div class="rounded-xl bg-gray p-4 xl:px-8 2xl:px-14">Boarding
                                     Point - Laxmipur</div>
-                                <div
-                                    class="rounded-xl bg-gray p-4 xl:px-8 2xl:px-14">Dropping
+                                <div class="rounded-xl bg-gray p-4 xl:px-8 2xl:px-14">Dropping
                                     Point - Bogura</div>
-                                <div
-                                    class="rounded-xl bg-gray p-4 xl:px-8 2xl:px-14">Est.
+                                <div class="rounded-xl bg-gray p-4 xl:px-8 2xl:px-14">Est.
                                     Time - 11 Hour</div>
                             </div>
                         </div>
@@ -406,16 +407,28 @@
         <div class="modal-box max-w-2xl lg:p-12 p-6 text-center font-Roboto">
             <img src="images/success.png" alt="" class="mx-auto lg:mb-9 mb-4">
             <h3 class="font-bold text-green lg:mb-9 mb-4 text-2xl">SUCCESS</h3>
-            <p class="font-medium text-xl mb-2">Thank you for Booking Our Bus Seats. <br> We are working hard to find the best service and deals for you.</p>
+            <p class="font-medium text-xl mb-2">Thank you for Booking Our Bus Seats. <br> We are working hard to find
+                the best service and deals for you.</p>
             <p class="font-light text-xl">Shortly you will find a confirmation in your email.</p>
             <div class="modal-action justify-center">
                 <form method="dialog">
                     <button
-                        class="btn btn-success bg-green border-0 text-white rounded-full font-semibold text-xl mx-auto py-4 lg:px-24 px-16 h-auto" onclick="window.location.reload();">Continue</button>
+                        class="btn btn-success bg-green border-0 text-white rounded-full font-semibold text-xl mx-auto py-4 lg:px-24 px-16 h-auto"
+                        onclick="window.location.reload();">Continue</button>
                 </form>
             </div>
         </div>
     </dialog>
+    <div id="toast" class="toast hidden toast-top toast-end">
+        <div class="alert alert-success">
+            <span>Coupon Copied!</span>
+        </div>
+    </div>
+    <div id="toastError" class="toast hidden toast-top toast-end">
+        <div class="alert alert-error">
+            <span>Something went wrong!</span>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 

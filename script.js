@@ -214,6 +214,37 @@ function grandPrice(totalPrice, discountPrice){
     return price;
 }
 
+// copy coupon codes
+document.getElementById('NEW15').addEventListener('click', function(){
+    navigator.clipboard.writeText('NEW15').then(() => {
+        removeClassNameById('toast', 'hidden')
+        setTimeout(() => {
+            addClassNameById('toast', 'hidden')
+        }, 1000);
+    })
+    .catch(err => {
+        removeClassNameById('toastError', 'hidden')
+        setTimeout(() => {
+            addClassNameById('toastError', 'hidden')
+        }, 1000);
+      });
+});
+
+document.getElementById('Couple20').addEventListener('click', function(){
+    navigator.clipboard.writeText('Couple 20').then(() => {
+        removeClassNameById('toast', 'hidden')
+        setTimeout(() => {
+            addClassNameById('toast', 'hidden')
+        }, 1000);
+    })
+    .catch(err => {
+        removeClassNameById('toastError', 'hidden')
+        setTimeout(() => {
+            addClassNameById('toastError', 'hidden')
+        }, 1000);
+      });
+});
+
 
 
 function getTextById(id) {
