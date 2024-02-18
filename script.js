@@ -50,10 +50,8 @@ document.getElementById('seats-container').addEventListener('click', function (e
         }
         if (selectedSeats.length < 4 && !selectedSeats.includes(seatId)) {
             selectSeat(seatId);
-            console.log(selectedSeats);
         }else if(selectedSeats.length <= 4 && selectedSeats.includes(seatId)) {
             removeSeat(seatId);
-            console.log(selectedSeats);
         }
 
         // Increase the number of Selected Seats
@@ -76,7 +74,26 @@ function selectSeat(id) {
     setTextById('available-seat', availableSeat);
 
     // Add Selected Seats to the list
+    const seatListContainer = document.getElementById('selected-seats-container');
+    const seatContainer = document.createElement('div');
+    seatContainer.className = "flex justify-between";
 
+    // Add Seat Number
+    const seatNumber = document.createElement('p');
+    seatNumber.innerText = id;
+    seatContainer.appendChild(seatNumber);
+
+    // Add Seat Number
+    const seatClass = document.createElement('p');
+    seatClass.innerText = 'Economoy';
+    seatContainer.appendChild(seatClass);
+
+    // Add Seat Price
+    const seatPrice = document.createElement('p');
+    seatPrice.innerText = '550';
+    seatContainer.appendChild(seatPrice);
+    
+    seatListContainer.appendChild(seatContainer);
 }
 
 function removeSeat(id) {
@@ -94,6 +111,20 @@ function removeSeat(id) {
     availableSeat = parseInt(availableSeat);
     availableSeat++;
     setTextById('available-seat', availableSeat);
+
+
+    // Remove the seat form the list
+    const seatListContainer = document.getElementById('selected-seats-container');
+    let childDivs = seatListContainer.getElementsByClassName('flex justify-between');
+    for (let i = 0; i < childDivs.length; i++) {
+        let currentDiv = childDivs[i];
+        let p = currentDiv.querySelector('p');
+
+        if (p && p.innerText.trim() === id) {
+            seatListContainer.removeChild(currentDiv);
+            break;
+        }
+    }
 
 }
 
