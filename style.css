@@ -22,3 +22,9 @@
 .grid-cols-cutstom-5{
     grid-template-columns: auto repeat(4, minmax(0, 1fr));
 }
+
+.selected{
+    background-color: #1DD100;
+    color: white;
+    border: 0;
+}
