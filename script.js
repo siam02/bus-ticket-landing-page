@@ -195,6 +195,7 @@ document.getElementById('apply-coupon').addEventListener('click', function() {
             }
             const price = totalPrice();
             const discountPrice = price * (discount/100);
+            setTextById('applied-coupon', coupon);
             setTextById('discount-price', discountPrice);
             couponApplied = true;
             
