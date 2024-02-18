@@ -304,17 +304,17 @@
                             <hr class="my-4 border-[#03071233]">
                             <div class="flex gap-20 justify-between  font-medium mb-4">
                                 <p>Total</p>
-                                <p>BDT <span id="total-price">1100</span></p>
+                                <p>BDT <span id="total-price">0</span></p>
                             </div>
                             <div id="discount" class="flex gap-20 hidden justify-between  font-medium mb-4">
                                 <p>Discount</p>
                                 <p>- BDT <span id="discount-price">1100</span></p>
                             </div>
-                            <div id="coupon-container" class="bg-white p-2 rounded-xl flex items-center">
-                                <input class="flex-1 w-full focus:border-0 focus:outline-0 active:border-0 border-0 input"
+                            <div id="coupon-container" class="bg-white !bg-[#f2f2f2] p-2 rounded-xl flex items-center">
+                                <input class="flex-1 w-full focus:border-0 input-disabled focus:outline-0 active:border-0 border-0 input"
                                     id="coupon" placeholder="Have any copupon?" type="text">
                                 <button id="apply-coupon"
-                                    class="btn btn-success border-none font-semibold  py-3 px-4 text-white bg-primary">Apply</button>
+                                    class="btn btn-success btn-disabled border-none font-semibold  py-3 px-4 text-white bg-primary">Apply</button>
                             </div>
                             <div class="flex gap-20 justify-between font-medium mt-6">
                                 <p>Grand Total</p>

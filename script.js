@@ -57,6 +57,19 @@ document.getElementById('seats-container').addEventListener('click', function (e
         // Increase the number of Selected Seats
         let selectedSeatNumber = selectedSeats.length;
         setTextById('seats-selected', selectedSeatNumber)
+
+        if (selectedSeatNumber === 4) {
+            removeClassNameById('coupon-container', '!bg-[#f2f2f2]');
+            removeClassNameById('coupon', 'input-disabled');
+            removeClassNameById('apply-coupon', 'btn-disabled');
+        }else{
+            addClassNameById('coupon-container', '!bg-[#f2f2f2]');
+            addClassNameById('coupon', 'input-disabled');
+            addClassNameById('apply-coupon', 'btn-disabled');
+        }
+
+        // update total price
+        totalPrice()
     }
 });
 
@@ -74,25 +87,25 @@ function selectSeat(id) {
     setTextById('available-seat', availableSeat);
 
     // Add Selected Seats to the list
+    addSeatToList(id);
+}
+
+function addSeatToList(id){
     const seatListContainer = document.getElementById('selected-seats-container');
     const seatContainer = document.createElement('div');
     seatContainer.className = "flex justify-between";
-
     // Add Seat Number
     const seatNumber = document.createElement('p');
     seatNumber.innerText = id;
     seatContainer.appendChild(seatNumber);
-
     // Add Seat Number
     const seatClass = document.createElement('p');
     seatClass.innerText = 'Economoy';
     seatContainer.appendChild(seatClass);
-
     // Add Seat Price
     const seatPrice = document.createElement('p');
     seatPrice.innerText = '550';
     seatContainer.appendChild(seatPrice);
-    
     seatListContainer.appendChild(seatContainer);
 }
 
@@ -114,6 +127,11 @@ function removeSeat(id) {
 
 
     // Remove the seat form the list
+    removeSeatFromList(id);
+
+}
+
+function removeSeatFromList(id){
     const seatListContainer = document.getElementById('selected-seats-container');
     let childDivs = seatListContainer.getElementsByClassName('flex justify-between');
     for (let i = 0; i < childDivs.length; i++) {
@@ -125,12 +143,22 @@ function removeSeat(id) {
             break;
         }
     }
-
 }
 
 
 
+// Total price
+function totalPrice() {
+    const seatSelectedNumber = selectedSeats.length;
+    const price = 550 * seatSelectedNumber;
+    setTextById('total-price', price)
+    return price
+}
 
+// discount Price
+function discount() {
+    document.getElementById('apply-coupon').addEventListener('click');
+}
 
 function getTextById(id) {
     let text = document.getElementById(id);
@@ -149,4 +177,14 @@ function getValueById(id) {
     text = text.value;
 
     return text
+}
+
+function removeClassNameById(id, className) {
+    const el = document.getElementById(id);
+    el.classList.remove(className);
+}
+
+function addClassNameById(id, className) {
+    const el = document.getElementById(id);
+    el.classList.add(className);
 }
