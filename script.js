@@ -66,8 +66,12 @@ document.getElementById('seats-container').addEventListener('click', function (e
         }
         if (selectedSeats.length < 4 && !selectedSeats.includes(seatId)) {
             selectSeat(seatId);
-        }else if(selectedSeats.length <= 4 && selectedSeats.includes(seatId) && !couponApplied) {
-            removeSeat(seatId);
+        }else if(selectedSeats.length <= 4 && selectedSeats.includes(seatId)) {
+            if (!couponApplied) {
+                removeSeat(seatId);
+            }else{
+                alert("You can't change seats after applying coupon. Please start over by reloading this page to change seats");
+            }
         }
 
         // Increase the number of Selected Seats

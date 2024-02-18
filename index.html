@@ -18,6 +18,7 @@
                         'heading': '#030712',
                         'offWhite': '#F7F8F8',
                         'neutral': '#03071233',
+                        'green': '#27AE60',
                     }
                 }
             }
@@ -172,7 +173,8 @@
                                     <p class="text-info text-lg font-Inter">Coach-009-WEB ! AC_Business</p>
                                 </div>
                             </div>
-                            <div class="flex gap-2 lg:p-3 p-6 justify-center lg:justify-start items-center rounded-xl bg-[#1DD10026] text-primary">
+                            <div
+                                class="flex gap-2 lg:p-3 p-6 justify-center lg:justify-start items-center rounded-xl bg-[#1DD10026] text-primary">
                                 <div>
                                     <img src="images/seat-green.png" alt="">
                                 </div>
@@ -293,8 +295,7 @@
                             class="font-semibold text-2xl border-b pb-4 w-full border-neutral font-Raleway border-dashed lg:text-left text-center">
                             Select Your Seat</h3>
                         <div class="lg:p-8 p-4 bg-offWhite rounded-xl mt-6">
-                            <div
-                                class="grid grid-cols-3 font-medium border-b border-dashed border-neutral pb-4 mb-4">
+                            <div class="grid grid-cols-3 font-medium border-b border-dashed border-neutral pb-4 mb-4">
                                 <p>Seat <span class="badge bg-primary text-white" id="seats-selected">0</span></p>
                                 <p class="text-center">Class</p>
                                 <p class="text-right">Price</p>
@@ -311,10 +312,12 @@
                                 <p>- BDT <span id="discount-price">1100</span></p>
                             </div>
                             <div id="coupon-container" class="bg-white !bg-[#f2f2f2] p-2 rounded-xl flex items-center">
-                                <input class="flex-1 w-full focus:border-0 focus:outline-0 active:border-0 border-0 input"
+                                <input
+                                    class="flex-1 w-full focus:border-0 focus:outline-0 active:border-0 border-0 input"
                                     id="coupon" placeholder="Have any copupon?" disabled type="text">
                                 <button id="apply-coupon"
-                                    class="btn btn-success border-none font-semibold  py-3 px-4 text-white bg-primary" disabled>Apply</button>
+                                    class="btn btn-success border-none font-semibold  py-3 px-4 text-white bg-primary"
+                                    disabled>Apply</button>
                             </div>
                             <div class="flex gap-20 justify-between font-medium mt-6">
                                 <p>Grand Total</p>
@@ -339,8 +342,9 @@
                                 class="input h-auto p-5 input-bordered mt-4 w-full" />
                         </div>
                         <div class="mt-6">
-                            <button id="form-submit"
-                                class="btn btn-success bg-primary w-full h-auto border-0 text-white rounded-2xl font-extrabold font-Raleway text-xl py-5" disabled>Next</button>
+                            <button onclick="formSubmitted.showModal()" id="form-submit"
+                                class="btn btn-success bg-primary w-full h-auto border-0 text-white rounded-2xl font-extrabold font-Raleway text-xl py-5"
+                                disabled>Next</button>
                         </div>
                         <div class="mt-6 flex justify-evenly">
                             <a href="" class="underline text-info">Terms and Conditions</a>
@@ -374,7 +378,8 @@
                 </div>
             </div>
             <div class="flex lg:flex-row flex-col font-Inter items-center gap-y-4 lg:justify-between mt-8">
-                <p class=" text-[#FFFFFFB3] text-center lg:text-left">@all rights reserved, P-Ticket services limited.2024</p>
+                <p class=" text-[#FFFFFFB3] text-center lg:text-left">@all rights reserved, P-Ticket services
+                    limited.2024</p>
                 <div>
                     <ul class="flex gap-8 text-white  font-semibold">
                         <li><a href="">Terms & condition</a></li>
@@ -385,6 +390,20 @@
             </div>
         </div>
     </footer>
+    <dialog id="formSubmitted" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box max-w-2xl p-12 text-center font-Roboto">
+            <img src="images/success.png" alt="" class="mx-auto mb-9">
+            <h3 class="font-bold text-green mb-9 text-2xl">SUCCESS</h3>
+            <p class="font-medium text-xl mb-2">Thank you for Booking Our Bus Seats. <br> We are working hard to find the best service and deals for you.</p>
+            <p class="font-light text-xl">Shortly you will find a confirmation in your email.</p>
+            <div class="modal-action justify-center">
+                <form method="dialog">
+                    <button
+                        class="btn btn-success bg-green border-0 text-white rounded-full font-semibold text-xl mx-auto py-4 px-24 h-auto" onclick="window.location.reload();">Continue</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <script src="script.js"></script>
 </body>
 
