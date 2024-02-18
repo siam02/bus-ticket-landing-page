@@ -8,3 +8,17 @@
 .font-Inter {
     font-family: "Inter", sans-serif;
 }
+
+.invalid-input{
+    border: 1px solid red;
+    outline: 1px solid red;
+}
+
+.invalid-input:focus{
+    border: 2px solid red;
+    outline: 2px solid red;
+}
+
+.grid-cols-cutstom-5{
+    grid-template-columns: auto repeat(4, minmax(0, 1fr));
+}
