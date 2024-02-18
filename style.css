@@ -20,7 +20,7 @@
 }
 
 .grid-cols-custom-6{
-    grid-template-columns: auto repeat(5, minmax(0, 1fr));
+    grid-template-columns: auto repeat(2, minmax(0, 1fr)) 2px repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols-custom-5{
@@ -39,6 +39,6 @@
 
 @media (min-width: 1024px) {
     .lg\:grid-cols-custom-6 {
-        grid-template-columns: auto repeat(5, minmax(0, 1fr));
+        grid-template-columns: auto repeat(2, minmax(0, 1fr)) 2px repeat(2, minmax(0, 1fr));
     }
 }
