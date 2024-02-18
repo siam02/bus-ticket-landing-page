@@ -27,22 +27,18 @@ function validatePhoneNumber() {
         return false;
     }
 
-    if (!regex.test(number) && number !== "") {
+    if (!regex.test(number)) {
         invalid.innerText = "Please enter valid Phone Number";
         invalid.classList.remove("hidden")
-        
         phoneNumber.classList.add('invalid-input');
-
-        
         addAttrById('form-submit', 'disabled');
-
         return false;
     } else {
         phoneNumber.classList.remove('invalid-input');
         invalid.innerText = "";
         invalid.classList.add("hidden")
 
-        if (selectedSeats.length > 0 && number !== "") {
+        if (selectedSeats.length > 0) {
             removeAttrById('form-submit', 'disabled');
         }else{
             addAttrById('form-submit', 'disabled');
@@ -60,7 +56,7 @@ let selectedSeats = [];
 let couponApplied;
 document.getElementById('seats-container').addEventListener('click', function (event) {
     const seatId = event.target.id;
-    if (seatId != 'seats-container' && seatId != '') {
+    if (seatId !== 'seats-container' && seatId !== '') {
         if (selectedSeats.length === 4 && !selectedSeats.includes(seatId)) {
             alert("You can't select more than 4 seats");
         }
@@ -90,8 +86,9 @@ document.getElementById('seats-container').addEventListener('click', function (e
 
         // update total price
         totalPrice();
+
+        // Update Form Submit button
         const isPhone = validatePhoneNumber();
-        console.log(isPhone);
         if (selectedSeats.length > 0 && isPhone === true) {
             removeAttrById('form-submit', 'disabled');
         }else{
@@ -105,7 +102,8 @@ document.getElementById('seats-container').addEventListener('click', function (e
 function selectSeat(id) {
     // Add color to the selected seat
     const seat = document.getElementById(id);
-    seat.classList.add('btn-success', 'selected');
+    addClassNameById(id, 'btn-success');
+    addClassNameById(id, 'selected');
     selectedSeats.push(id);
 
     // Decrease the number of available seat
@@ -123,18 +121,19 @@ function addSeatToList(id){
     const seatContainer = document.createElement('div');
     seatContainer.className = "flex justify-between";
     // Add Seat Number
-    const seatNumber = document.createElement('p');
-    seatNumber.innerText = id;
-    seatContainer.appendChild(seatNumber);
-    // Add Seat Number
-    const seatClass = document.createElement('p');
-    seatClass.innerText = 'Economoy';
-    seatContainer.appendChild(seatClass);
+    createAndAppendElement('p', id, seatContainer);
+    // Add Seat Number;
+    createAndAppendElement('p', 'Economoy', seatContainer);
     // Add Seat Price
-    const seatPrice = document.createElement('p');
-    seatPrice.innerText = '550';
-    seatContainer.appendChild(seatPrice);
+    createAndAppendElement('p', '550', seatContainer);
+    // Add the seat to the list
     seatListContainer.appendChild(seatContainer);
+}
+
+function createAndAppendElement(el, text, parentChild) {
+    const elemet = document.createElement(el);
+    elemet.innerText = text;
+    parentChild.appendChild(elemet);
 }
 
 function removeSeat(id) {
@@ -172,8 +171,6 @@ function removeSeatFromList(id){
     }
 }
 
-
-
 // Total price
 function totalPrice() {
     const seatSelectedNumber = selectedSeats.length;
@@ -184,7 +181,7 @@ function totalPrice() {
 }
 
 // discount Price
-document.getElementById('apply-coupon').addEventListener('click', function discountPrice(event) {
+document.getElementById('apply-coupon').addEventListener('click', function() {
     const coupon = getValueById('coupon');
 
     if (coupon !== "" ) {
