@@ -19,7 +19,11 @@
     outline: 2px solid red;
 }
 
-.grid-cols-cutstom-5{
+.grid-cols-custom-6{
+    grid-template-columns: auto repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-custom-5{
     grid-template-columns: auto repeat(4, minmax(0, 1fr));
 }
 
@@ -31,4 +35,10 @@
 
 .font-Roboto{
     font-family: "Roboto", sans-serif;;
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-custom-6 {
+        grid-template-columns: auto repeat(5, minmax(0, 1fr));
+    }
 }
