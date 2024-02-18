@@ -22,11 +22,19 @@ function validatePhoneNumber() {
     const number = phoneNumber.value;
     const invalid = document.getElementById("invalid-phone-number");
 
-    if (!regex.test(number) && number != "") {
+    if (number === "") {
+        addAttrById('form-submit', 'disabled');
+        return false;
+    }
+
+    if (!regex.test(number) && number !== "") {
         invalid.innerText = "Please enter valid Phone Number";
         invalid.classList.remove("hidden")
-
+        
         phoneNumber.classList.add('invalid-input');
+
+        
+        addAttrById('form-submit', 'disabled');
 
         return false;
     } else {
@@ -34,7 +42,14 @@ function validatePhoneNumber() {
         invalid.innerText = "";
         invalid.classList.add("hidden")
 
+        if (selectedSeats.length > 0 && number !== "") {
+            removeAttrById('form-submit', 'disabled');
+        }else{
+            addAttrById('form-submit', 'disabled');
+        }
+
         return true;
+
     }
 
 }
@@ -42,6 +57,7 @@ function validatePhoneNumber() {
 
 // Ticket Functionalities
 let selectedSeats = [];
+let couponApplied;
 document.getElementById('seats-container').addEventListener('click', function (event) {
     const seatId = event.target.id;
     if (seatId != 'seats-container' && seatId != '') {
@@ -50,7 +66,7 @@ document.getElementById('seats-container').addEventListener('click', function (e
         }
         if (selectedSeats.length < 4 && !selectedSeats.includes(seatId)) {
             selectSeat(seatId);
-        }else if(selectedSeats.length <= 4 && selectedSeats.includes(seatId)) {
+        }else if(selectedSeats.length <= 4 && selectedSeats.includes(seatId) && !couponApplied) {
             removeSeat(seatId);
         }
 
@@ -60,16 +76,24 @@ document.getElementById('seats-container').addEventListener('click', function (e
 
         if (selectedSeatNumber === 4) {
             removeClassNameById('coupon-container', '!bg-[#f2f2f2]');
-            removeClassNameById('coupon', 'input-disabled');
-            removeClassNameById('apply-coupon', 'btn-disabled');
+            removeAttrById('coupon', 'disabled');
+            removeAttrById('apply-coupon', 'disabled');
         }else{
             addClassNameById('coupon-container', '!bg-[#f2f2f2]');
-            addClassNameById('coupon', 'input-disabled');
-            addClassNameById('apply-coupon', 'btn-disabled');
+            addAttrById('coupon', 'disabled');
+            addAttrById('apply-coupon', 'disabled');
         }
 
         // update total price
-        totalPrice()
+        totalPrice();
+        const isPhone = validatePhoneNumber();
+        console.log(isPhone);
+        if (selectedSeats.length > 0 && isPhone === true) {
+            removeAttrById('form-submit', 'disabled');
+        }else{
+            addAttrById('form-submit', 'disabled');
+        }
+
     }
 });
 
@@ -116,7 +140,6 @@ function removeSeat(id) {
     let seatIndex = selectedSeats.indexOf(id);
     if (seatIndex !== -1) {
         selectedSeats.splice(seatIndex, 1);
-
     }
 
     // Increase the number of available seat
@@ -152,13 +175,44 @@ function totalPrice() {
     const seatSelectedNumber = selectedSeats.length;
     const price = 550 * seatSelectedNumber;
     setTextById('total-price', price)
-    return price
+    setTextById('grand-total-price', price)
+    return price;
 }
 
 // discount Price
-function discount() {
-    document.getElementById('apply-coupon').addEventListener('click');
+document.getElementById('apply-coupon').addEventListener('click', function discountPrice(event) {
+    const coupon = getValueById('coupon');
+
+    if (coupon !== "" ) {
+        if(coupon === "NEW15" || coupon === "Couple 20"){
+            removeClassNameById('discount', 'hidden');
+            document.getElementById('coupon-container').remove();
+            if (coupon === "NEW15") {
+                var discount = 15;
+            }else if(coupon === "Couple 20"){
+                var discount = 20;
+            }
+            const price = totalPrice();
+            const discountPrice = price * (discount/100);
+            setTextById('discount-price', discountPrice);
+            couponApplied = true;
+            
+            grandPrice(price, discountPrice);
+        }else{
+            alert('Please input valid coupon');
+        }
+    }else{
+        alert('Please input coupon');
+    }
+});
+
+function grandPrice(totalPrice, discountPrice){
+    const price = totalPrice - discountPrice;
+    setTextById('grand-total-price', price)
+    return price;
 }
+
+
 
 function getTextById(id) {
     let text = document.getElementById(id);
@@ -187,4 +241,14 @@ function removeClassNameById(id, className) {
 function addClassNameById(id, className) {
     const el = document.getElementById(id);
     el.classList.add(className);
+}
+
+function removeAttrById(id, attr) {
+    const el = document.getElementById(id);
+    el.removeAttribute(attr);
+}
+
+function addAttrById(id, attr) {
+    const el = document.getElementById(id);
+    el.setAttribute(attr, true);
 }

@@ -311,14 +311,14 @@
                                 <p>- BDT <span id="discount-price">1100</span></p>
                             </div>
                             <div id="coupon-container" class="bg-white !bg-[#f2f2f2] p-2 rounded-xl flex items-center">
-                                <input class="flex-1 w-full focus:border-0 input-disabled focus:outline-0 active:border-0 border-0 input"
-                                    id="coupon" placeholder="Have any copupon?" type="text">
+                                <input class="flex-1 w-full focus:border-0 focus:outline-0 active:border-0 border-0 input"
+                                    id="coupon" placeholder="Have any copupon?" disabled type="text">
                                 <button id="apply-coupon"
-                                    class="btn btn-success btn-disabled border-none font-semibold  py-3 px-4 text-white bg-primary">Apply</button>
+                                    class="btn btn-success border-none font-semibold  py-3 px-4 text-white bg-primary" disabled>Apply</button>
                             </div>
                             <div class="flex gap-20 justify-between font-medium mt-6">
                                 <p>Grand Total</p>
-                                <p>BDT <span id="grand-total-price">1100</span></p>
+                                <p>BDT <span id="grand-total-price">0</span></p>
                             </div>
                         </div>
                         <div class="mt-6">
@@ -339,8 +339,8 @@
                                 class="input h-auto p-5 input-bordered mt-4 w-full" />
                         </div>
                         <div class="mt-6">
-                            <button
-                                class="btn btn-success bg-primary w-full h-auto border-0 text-white rounded-2xl font-extrabold font-Raleway text-xl py-5">Next</button>
+                            <button id="form-submit"
+                                class="btn btn-success bg-primary w-full h-auto border-0 text-white rounded-2xl font-extrabold font-Raleway text-xl py-5" disabled>Next</button>
                         </div>
                         <div class="mt-6 flex justify-evenly">
                             <a href="" class="underline text-info">Terms and Conditions</a>
